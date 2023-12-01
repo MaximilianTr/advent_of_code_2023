@@ -29,7 +29,6 @@ public class CalibrationDocumentReader {
     private List<String> translateRawLineToNumbers(List<String> lineList) {
         List<String> mappedLineList = new ArrayList<>();
         mappedLineList = lineList.stream().map((e)->{
-            System.out.println(e);
             //return reduceStringToFirstAndLastDigit(e);
             return reduceStringToFirstAndLastDigitIncludingWords(e);
         }).toList();
@@ -50,7 +49,6 @@ public class CalibrationDocumentReader {
         } else if (result.length() == 1) {
             result += result;
         }
-        System.out.println(result);
         return result;
     }
 
@@ -76,7 +74,6 @@ public class CalibrationDocumentReader {
         } else if (result.length() == 1) {
             result += result;
         }
-        System.out.println(result);
         return result;
     }
 
