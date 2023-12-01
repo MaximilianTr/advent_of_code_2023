@@ -13,7 +13,7 @@ public class CalibrationDocumentReader {
     Map<String, Integer> wordsToNumbers = Map.of("one", 1, "two", 2, "three", 3, "four", 4, "five", 5, "six", 6, "seven", 7, "eight", 8, "nine", 9);
     
     public void run() {
-        System.out.println(calculateSum(convertToIntegerEachLine(mapCalibrationLineToNumbers(readTextDocumentToList()))));
+        System.out.println(calculateSum(convertToIntegerEachLine(translateRawLineToNumbers(readTextDocumentToList()))));
     }
 
     private Integer calculateSum(List<Integer> intList) {
@@ -26,7 +26,7 @@ public class CalibrationDocumentReader {
         return intList;
     }
 
-    private List<String> mapCalibrationLineToNumbers(List<String> lineList) {
+    private List<String> translateRawLineToNumbers(List<String> lineList) {
         List<String> mappedLineList = new ArrayList<>();
         mappedLineList = lineList.stream().map((e)->{
             System.out.println(e);
