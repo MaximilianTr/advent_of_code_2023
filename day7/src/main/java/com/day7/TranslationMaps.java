@@ -12,7 +12,7 @@ public class TranslationMaps {
         translationMap.put('A', 14l);
         translationMap.put('K', 13l);
         translationMap.put('Q', 12l);
-        translationMap.put('J', 11l);
+        translationMap.put('J', 1l);
         translationMap.put('T', 10l);
         translationMap.put('9', 9l);
         translationMap.put('8', 8l);

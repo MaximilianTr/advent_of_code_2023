@@ -169,6 +169,12 @@ public class Hand implements Comparable<Hand> {
         }
 
         public Hand build() {
+
+            // change for task 2
+            if (this.cards.contains("J")) {
+                this.type = getHighestPossibleHandType(this.cards);
+            }
+
             long value = 0l;
             value += this.type.getValue() * 1000000000000l;
             Map<Character, Long> translationMap = TranslationMaps.getInstance().getTranslationMap();
@@ -180,6 +186,30 @@ public class Hand implements Comparable<Hand> {
 
             System.out.println("" + (10 ^ 2));
             return new Hand(this.cards, this.type, this.bid, value);
+        }
+
+        private HandTypes getHighestPossibleHandType(String cardsRandom) {
+            long highestValue = 0l;
+            long value = 0l;
+            Hand winner = new Hand("23456", HandTypes.HIGH_CARD, 0, 0l);
+            Set<Character> singleCards = TranslationMaps.getInstance().getTranslationMap().keySet();
+
+            for (Character singleCard : singleCards) {
+                if (!singleCard.equals('J')) {
+                    Hand tempHand = new Hand.HandBuilder()
+                            .withCardsAndAutomaticHandType(cardsRandom.replace('J', singleCard))
+                            .build();
+                    value = tempHand.getValue();
+                    if (value >= highestValue) {
+                        highestValue = value;
+                        winner = tempHand;
+
+                    }
+                }
+            }
+
+            return winner.getType();
+
         }
 
     }

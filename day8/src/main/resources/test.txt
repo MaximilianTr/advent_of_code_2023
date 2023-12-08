@@ -1,0 +1,34 @@
+Node [name=DKZ, left=KCL, right=NNG]nach 12083
+Node [name=DBZ, left=GDD, right=CQN]nach 13207
+Node [name=NNZ, left=GPT, right=TGT]nach 16579
+Node [name=ZZZ, left=DNR, right=XRF]nach 17141
+Node [name=PMZ, left=FBH, right=VMT]nach 18827
+Node [name=NJZ, left=VMD, right=PBN]nach 22199
+
+
+
+Node [name=PMZ, left=FBH, right=VMT] nach 207097
+Node [name=PMZ, left=FBH, right=VMT] nach 225924
+Node [name=PMZ, left=FBH, right=VMT] nach 244751
+
+
+Node [name=DBZ, left=GDD, right=CQN] nach 211312
+Node [name=DBZ, left=GDD, right=CQN] nach 224519
+Node [name=DBZ, left=GDD, right=CQN] nach 237726
+Node [name=DBZ, left=GDD, right=CQN] nach 250933
+
+Node [name=NNZ, left=GPT, right=TGT] nach 215527
+Node [name=NNZ, left=GPT, right=TGT] nach 232106
+Node [name=NNZ, left=GPT, right=TGT] nach 248685
+
+Node [name=DKZ, left=KCL, right=NNG] nach 217494
+Node [name=DKZ, left=KCL, right=NNG] nach 229577
+Node [name=DKZ, left=KCL, right=NNG] nach 241660
+Node [name=DKZ, left=KCL, right=NNG] nach 253743
+
+Node [name=NJZ, left=VMD, right=PBN] nach 221990
+Node [name=NJZ, left=VMD, right=PBN] nach 244189
+
+Node [name=ZZZ, left=DNR, right=XRF] nach 222833
+Node [name=ZZZ, left=DNR, right=XRF] nach 239974
+Node [name=ZZZ, left=DNR, right=XRF] nach 257115
