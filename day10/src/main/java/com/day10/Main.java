@@ -16,7 +16,11 @@ public class Main {
         fillFlatListGameboard();
         findSConnections();
         resolveDistancesToS();
+        markPipesInsideXDirection();
+        markPipesInsideYDirection();
 
+        System.out.println("Fields inside the loop (x and y scan combined): "
+                + flatListGameboard.stream().filter(e -> e.isInsideY() && e.isInsideX()).count());
         System.out.println(flatListGameboard.stream().max((e, e2) -> e.getDistanceToS() - e2.getDistanceToS()));
 
     }
@@ -122,10 +126,8 @@ public class Main {
             Pipe result = flatListGameboard.stream().filter(e -> e.getCoordinates().equals(nextCoordinatesInDirection))
                     .toList()
                     .getFirst();
-            System.out.println(result);
             return result;
         } catch (NoSuchElementException e) {
-            System.out.println(nextCoordinatesInDirection);
             e.printStackTrace();
             return null;
         }
@@ -133,5 +135,67 @@ public class Main {
 
     private static Pipe findStartingPipe() {
         return flatListGameboard.stream().filter(e -> e.getLetter() == 'S').toList().getFirst();
+    }
+
+    private static void markPipesInsideXDirection() {
+        boolean isNorthBlocked = false;
+        boolean isSouthBlocked = false;
+        for (Pipe p : flatListGameboard) {
+            if (p.isConnectedToS()) {
+                if (p.getConnectionDirections().contains(Direction.NORTH)) {
+                    isNorthBlocked = !isNorthBlocked;
+                }
+
+                if (p.getConnectionDirections().contains(Direction.SOUTH)) {
+                    isSouthBlocked = !isSouthBlocked;
+                }
+            }
+
+            if (!p.isConnectedToS()) {
+                p.setInsideX(isNorthBlocked && isSouthBlocked);
+            }
+
+            if (p.getCoordinates().getX() == 0) {
+                isNorthBlocked = false;
+                isSouthBlocked = false;
+            }
+        }
+
+        System.out.println("Fields inside the loop (x scan): "
+                + flatListGameboard.stream().filter(e -> e.isInsideX() && !e.isConnectedToS()).count());
+
+    }
+
+    private static void markPipesInsideYDirection() {
+        boolean isEastBlocked = false;
+        boolean isWestBlocked = false;
+        int maxX = flatListGameboard.stream().map(e -> e.getCoordinates().getX()).max((a, b) -> a - b).get();
+        int maxY = flatListGameboard.stream().map(e -> e.getCoordinates().getY()).max((a, b) -> a - b).get();
+
+        for (int x = 0; x <= maxX; x++) {
+            isEastBlocked = false;
+            isWestBlocked = false;
+            for (int y = 0; y <= maxY; y++) {
+                Pipe p = findPipeAtCoordinates(new Coordinates(x, y));
+                int indexP = flatListGameboard.indexOf(p);
+                if (p.isConnectedToS()) {
+                    if (p.getConnectionDirections().contains(Direction.EAST)) {
+                        isEastBlocked = !isEastBlocked;
+                    }
+
+                    if (p.getConnectionDirections().contains(Direction.WEST)) {
+                        isWestBlocked = !isWestBlocked;
+                    }
+                }
+                if (!p.isConnectedToS()) {
+                    p.setInsideY(isEastBlocked && isWestBlocked);
+                }
+                flatListGameboard.set(indexP, p);
+            }
+        }
+
+        System.out.println("Fields inside the loop (y scan): "
+                + flatListGameboard.stream().filter(e -> e.isInsideY()).count());
+
     }
 }

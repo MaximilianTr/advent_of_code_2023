@@ -12,6 +12,9 @@ public class Pipe {
     private boolean isConnectedToS;
     private int distanceToS = 0;
 
+    private boolean isInsideX = false;
+    private boolean isInsideY = false;
+
     public Coordinates getNextCoordinatesInDirection(Direction direction) {
         switch (direction) {
             case NORTH -> {
@@ -38,6 +41,22 @@ public class Pipe {
         this.connectionDirections = connectionDirections;
         this.isConnectedToS = isConnectedToS;
         this.distanceToS = distanceToS;
+    }
+
+    public void setInsideX(boolean isInsideX) {
+        this.isInsideX = isInsideX;
+    }
+
+    public boolean isInsideX() {
+        return this.isInsideX;
+    }
+
+    public void setInsideY(boolean isInsideY) {
+        this.isInsideY = isInsideY;
+    }
+
+    public boolean isInsideY() {
+        return this.isInsideY;
     }
 
     public void addConnectionDirection(Direction direction) {
@@ -79,7 +98,8 @@ public class Pipe {
     @Override
     public String toString() {
         return "Pipe [letter=" + letter + ", coordinates=" + coordinates + ", connectionDirections="
-                + connectionDirections + ", isConnectedToS=" + isConnectedToS + ", distanceToS=" + distanceToS + "]";
+                + connectionDirections + ", isConnectedToS=" + isConnectedToS + ", distanceToS=" + distanceToS
+                + ", isInsideX=" + isInsideX + ", isInsideY=" + isInsideY + "]";
     }
 
     @Override
