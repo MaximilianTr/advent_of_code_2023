@@ -21,6 +21,9 @@ public class Main {
         System.out.println(gameList.stream().filter(e -> e.isEligibleGame(availableSet)).map(e -> e.getId()).reduce(0,
                 (a, b) -> a + b));
 
+        System.out.println(gameList.stream().map(e -> e.calculateCubeSetPower()).reduce(0L,
+                (a, b) -> a + b));
+
     }
 
 }

@@ -30,6 +30,13 @@ public class Game {
         return true;
     }
 
+    public long calculateCubeSetPower() {
+        long factorGreen = this.revealList.stream().map(e -> e.getGreen()).max((a, b) -> a - b).get();
+        long factorRed = this.revealList.stream().map(e -> e.getRed()).max((a, b) -> a - b).get();
+        long factorBlue = this.revealList.stream().map(e -> e.getBlue()).max((a, b) -> a - b).get();
+        return factorBlue * factorGreen * factorRed;
+    }
+
     public int getId() {
         return id;
     }
